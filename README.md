@@ -26,8 +26,8 @@ A script to automatically search Glassdoor for job listings, aggregate every app
 
 ## Thanks
 
-* [Selenium](https://selenium-python.readthedocs.io/) - A tool designed for QA testing, but that actually works great for making these types of bots
-* [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/doc) - A tool to scrape HTML/XML content (that saved be *big time* with this project)
+* [Selenium](https://selenium-python.readthedocs.io/) 
+* [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/doc) 
 
 
 

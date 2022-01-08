@@ -88,7 +88,6 @@ def go_to_listings(driver):
 
         return True
 
-    # note: please ignore all crappy error handling haha
     except NoSuchElementException:
         print('wrong location')
         return False
@@ -130,12 +129,11 @@ def aggregate_links(driver):
             link = f"https://www.glassdoor.com{link}"
             # print('test 1')
         # then, open up each url and save the result url
-        # because we got a 403 error when opening this normally, we have to establish the user agent
         user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36'
         headers={'User-Agent':user_agent,}
         request=urllib.request.Request(link,None,headers) #The assembled request
         signal.signal(signal.SIGALRM, signal_handler)
-        signal.alarm(35)   # Ten seconds
+        signal.alarm(35)   
         try:
             # print('in the try')
             # the url is on glassdoor itself, but once it's opened, it redirects - so let's store that
@@ -143,8 +141,8 @@ def aggregate_links(driver):
             time.sleep(.5)
             newLink = response.geturl()
             print(newLink)
-            # if the result url is from glassdoor, it's an 'easy apply' one and worth not saving
-            # however, this logic can be changed if you want to keep those
+           
+      
             if "glassdoor" not in newLink and (('greenhouse' in newLink) or ('lever' in newLink)):
                 print(newLink)
                 print('\n')
@@ -152,7 +150,6 @@ def aggregate_links(driver):
                 with open('viable.txt', "a") as f:
                     f.write(newLink + '\n')
         except:
-            # horrible way to catch errors but this doesnt happen regualrly (just 302 HTTP error)
             print(f'ERROR: failed for {link}')
             print('\n')
     print('DONE WITH PAGE..')
@@ -166,7 +163,7 @@ def getURLs():
     driver = webdriver.Chrome()
     success = login(driver)
     if not success:
-        # close the page if it gets stuck at some point - this logic can be improved
+        # close the page if it gets stuck at some point 
         driver.close()
 
     success = go_to_listings(driver)

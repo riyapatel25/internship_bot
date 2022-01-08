@@ -1,7 +1,6 @@
 # Job Application Bot
 
-A script to automatically search Glassdoor for job listings, aggregate every application URL, and apply to each job using pre-populated data. ***All with one click!***
-
+A script to automatically search Glassdoor for job listings, aggregate every application URL, and apply to each job using pre-populated data. 
 
 
 ## Installation
